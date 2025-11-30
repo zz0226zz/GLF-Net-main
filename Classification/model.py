@@ -362,7 +362,7 @@ class Muti_Scale_Feature_Fuse_Module(torch.nn.Module):
         hidden_channels = channel // ratio
         # 48
         self.first_conv = nn.Sequential(
-            nn.Conv2d(channel, hidden_channels, k_s, stride, k_s // 2, bias=False),
+            nn.Conv2d(channel, hidden_channels, k_s, stride, k_s // 2, bias=False, groups=hidden_channels),
             nn.BatchNorm2d(hidden_channels),
             nn.ReLU(inplace=True)
         )
